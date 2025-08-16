@@ -1,3 +1,110 @@
 {
-               
+  
+  "app": {
+    "name": "RideReserve API",
+    "version": "1.0.0",
+    "environment": "development",
+    "mode": "debug",
+    "host": "localhost",
+    "port": 3000,
+    "timezone": "UTC"
+  },
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "user": "ridereserve_user",
+    "password": "your_secure_password_here",
+    "name": "ridereserve_db",
+    "connectionLimit": 10,
+    "acquireTimeout": 60000,
+    "timeout": 60000,
+    "charset": "utf8mb4",
+    "timezone": "+00:00"
+  },
+  "security": {
+    "jwtSecret": "your_super_secret_jwt_key_change_in_production",
+    "jwtExpiresIn": "24h",
+    "bcryptRounds": 12,
+    "sessionSecret": "your_session_secret_key_here"
+  },
+  "cors": {
+    "allowedOrigins": [
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "http://127.0.0.1:3000"
+    ],
+    "credentials": true
+  },
+  "rateLimit": {
+    "windowMs": 900000,
+    "max": 100,
+    "message": "Too many requests from this IP, please try again later."
+  },
+  "logging": {
+    "level": "debug",
+    "file": {
+      "enabled": true,
+      "path": "./logs/app.log",
+      "maxSize": "10m",
+      "maxFiles": "5"
+    },
+    "console": {
+      "enabled": true,
+      "colorize": true
+    }
+  },
+  "email": {
+    "service": "gmail",
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "secure": false,
+    "auth": {
+      "user": "your_email@gmail.com",
+      "pass": "your_app_password"
+    }
+  },
+  "payment": {
+    "stripe": {
+      "publishableKey": "pk_test_your_stripe_publishable_key",
+      "secretKey": "sk_test_your_stripe_secret_key",
+      "webhookSecret": "whsec_your_webhook_secret"
+    }
+  },
+  "features": {
+    "emailVerification": true,
+    "smsNotifications": false,
+    "realTimeUpdates": true,
+    "analytics": true,
+    "caching": false
+  },
+  "cache": {
+    "redis": {
+      "enabled": false,
+      "host": "localhost",
+      "port": 6379,
+      "password": "",
+      "db": 0,
+      "ttl": 3600
+    }
+  },
+  "uploads": {
+    "maxFileSize": "5mb",
+    "allowedTypes": ["image/jpeg", "image/png", "image/gif"],
+    "storage": "local",
+    "path": "./uploads"
+  },
+  "api": {
+    "version": "v1",
+    "prefix": "/ridereserve/api/v1",
+    "pagination": {
+      "defaultLimit": 20,
+      "maxLimit": 100
+    }
+  },
+  "ride": {
+    "maxCapacity": 8,
+    "bookingTimeLimit": 30,
+    "cancellationTimeLimit": 2,
+    "defaultRadius": 10
+  }
 }
