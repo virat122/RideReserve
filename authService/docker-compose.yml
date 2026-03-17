@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+
+  auth-service:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    environment:
+      - DB_HOST=mysql
+
+  mysql:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD=root
+      MYSQL_DATABASE=authdb
+    ports:
+      - "3306:3306"
